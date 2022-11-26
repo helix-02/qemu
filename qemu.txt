@@ -1,0 +1,21 @@
+TO INSTALL VIRT-MANGER AND ITS DEPENDENCIES ON DEBIAN OR UBUNTU :- sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system virtinst bridge-utils
+                                            
+FOR ARCH LINUX :- pacman -S archlinux-keyring qemu virt-manager virt-viewer dnsmasq bridge-utils libquestfs 
+
+FOR FEDORA :- dnf install @virtualization
+
+TO CHECK YOUR COMPUTER SUPPORTS VIRTUALIZATION OF HARDWARE:- LC_ALL=C lscpu | grep Virtualiztion
+
+TO CHECK THE THREADS OF YOUR PROCESSOR :- egrep -c '(vmx|svm)' /proc/cpuinfo
+
+FIRST CHECK THE GROUPS AND THEN WILL ADD USER TO THE DEPENDENCIES :- sudo groups 
+
+AFTER INSTALLING THE ALL THE DEPENDENCIES ADD THE CURRENT USER IN GROUP :- sudo useradd -g $USER libvirt
+ 
+                                                                           sudo useradd -g $USER libvirt-kvm
+
+NOW CHECK THE Virtualiztion STATUS OF DAEMON :- sudo systemctl enable libvirtd.service
+                                                sudo systemctl start libvirtd.service
+                                                sudo systemctl status libvirtd
+
+NOW SIMPLY SETUP THE VIRT MANAGER
